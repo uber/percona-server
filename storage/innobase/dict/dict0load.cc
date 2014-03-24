@@ -806,7 +806,7 @@ dict_process_sys_zip_dict(
 		}
 		*data = reinterpret_cast<char*>(
 			btr_copy_externally_stored_field(data_len, field,
-							zip_size, len, heap));
+							zip_size, len, heap, NULL));
 	}
 	else {
 		*data_len = len;
