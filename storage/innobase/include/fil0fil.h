@@ -752,7 +752,7 @@ Reads or writes data. This operation is asynchronous (aio).
 @return DB_SUCCESS, or DB_TABLESPACE_DELETED if we are trying to do
 i/o on a tablespace which does not exist */
 #define fil_io(type, sync, space_id, zip_size, block_offset, byte_offset, len, buf, message) \
-	_fil_io(type, sync, space_id, zip_size, block_offset, byte_offset, len, buf, message, NULL)
+	_fil_io(type, sync, space_id, zip_size, block_offset, byte_offset, len, buf, message, NULL, FALSE)
 
 UNIV_INTERN
 dberr_t
@@ -783,7 +783,9 @@ _fil_io(
 				appropriately aligned */
 	void*	message,	/*!< in: message for aio handler if non-sync
 				aio used, else ignored */
-	trx_t*	trx)
+	trx_t*	trx,
+	ibool	should_buffer)	/*!< in: whether to buffer an aio request.
+				Only used by aio read ahead*/
 	MY_ATTRIBUTE((nonnull(8)));
 /**********************************************************************//**
 Waits for an aio operation to complete. This function is used to write the

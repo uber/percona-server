@@ -129,6 +129,9 @@ struct srv_stats_t {
 	ulint_ctr_1_t		lock_deadlock_count;
 
 	ulint_ctr_1_t		n_lock_max_wait_time;
+
+	/** Number of buffered aio requests submitted */
+	ulint_ctr_64_t		n_aio_submitted;
 };
 
 extern const char*	srv_main_thread_op_info;
@@ -1084,6 +1087,8 @@ struct export_var_t{
 #endif /* UNIV_DEBUG */
 	ulint innodb_column_compressed;		/*!< srv_column_compressed */
 	ulint innodb_column_decompressed;	/*!< srv_column_decompressed */
+
+	ulint innodb_buffered_aio_submitted;
 };
 
 /** Thread slot in the thread table.  */

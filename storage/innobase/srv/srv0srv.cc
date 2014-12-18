@@ -1272,6 +1272,9 @@ srv_refresh_innodb_monitor_stats(void)
 	srv_n_rows_deleted_old = srv_stats.n_rows_deleted;
 	srv_n_rows_read_old = srv_stats.n_rows_read;
 
+	export_vars.innodb_buffered_aio_submitted =
+		srv_stats.n_aio_submitted;
+
 	mutex_exit(&srv_innodb_monitor_mutex);
 }
 

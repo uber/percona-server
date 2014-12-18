@@ -970,6 +970,8 @@ static SHOW_VAR innodb_status_variables[]= {
   (char*) &export_vars.innodb_x_lock_spin_rounds,	  SHOW_LONGLONG},
   {"x_lock_spin_waits",
   (char*) &export_vars.innodb_x_lock_spin_waits,	  SHOW_LONGLONG},
+  {"buffered_aio_submitted",
+  (char*) &export_vars.innodb_buffered_aio_submitted,    SHOW_LONG},
   {NullS, NullS, SHOW_LONG}
 };
 
