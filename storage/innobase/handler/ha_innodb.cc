@@ -1004,6 +1004,12 @@ static SHOW_VAR innodb_status_variables[]= {
   (char*) &export_vars.innodb_logical_read_ahead_prefetched, SHOW_LONG},
   {"logical_read_ahead_in_buf_pool",
   (char*) &export_vars.innodb_logical_read_ahead_in_buf_pool, SHOW_LONG},
+  {"outstanding_aio_requests",
+  (char*) &export_vars.innodb_outstanding_aio_requests,  SHOW_LONG},
+#ifdef UNIV_DEBUG
+  {"max_outstanding_aio_requests",
+  (char*) &export_vars.innodb_max_outstanding_aio_requests, SHOW_LONG},
+#endif /* UNIV_DEBUG */
   {NullS, NullS, SHOW_LONG}
 };
 
@@ -18738,6 +18744,12 @@ static MYSQL_SYSVAR_ULONG(compressed_columns_threshold,
   "Compress column data if its length exceeds this value. Default is 96",
   NULL, NULL, 96, 1, ~0UL, 0);
 
+static MYSQL_SYSVAR_ULONG(aio_outstanding_requests, srv_io_outstanding_requests,
+  PLUGIN_VAR_RQCMDARG,
+  "Maximum number of outstanding AIO requests. Stall aio requests submission if"
+  "this is reached.",
+  NULL, NULL, 256, 0, 1024, 0);
+
 static struct st_mysql_sys_var* innobase_system_variables[]= {
   MYSQL_SYSVAR(log_block_size),
   MYSQL_SYSVAR(additional_mem_pool_size),
@@ -18924,6 +18936,7 @@ static struct st_mysql_sys_var* innobase_system_variables[]= {
   MYSQL_SYSVAR(sync_array_size),
   MYSQL_SYSVAR(compression_failure_threshold_pct),
   MYSQL_SYSVAR(compression_pad_pct_max),
+  MYSQL_SYSVAR(aio_outstanding_requests),
 #ifdef UNIV_DEBUG
   MYSQL_SYSVAR(trx_rseg_n_slots_debug),
   MYSQL_SYSVAR(limit_optimistic_insert_debug),
