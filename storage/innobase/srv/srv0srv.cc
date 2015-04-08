@@ -1272,9 +1272,6 @@ srv_refresh_innodb_monitor_stats(void)
 	srv_n_rows_deleted_old = srv_stats.n_rows_deleted;
 	srv_n_rows_read_old = srv_stats.n_rows_read;
 
-	export_vars.innodb_buffered_aio_submitted =
-		srv_stats.n_aio_submitted;
-
 	mutex_exit(&srv_innodb_monitor_mutex);
 }
 
@@ -1859,6 +1856,15 @@ srv_export_innodb_status(void)
 		= os_atomic_increment_lint(&srv_read_views_memory, 0);
 	export_vars.innodb_descriptors_memory
 		= os_atomic_increment_lint(&srv_descriptors_memory, 0);
+
+	export_vars.innodb_buffered_aio_submitted =
+		srv_stats.n_aio_submitted;
+	export_vars.innodb_logical_read_ahead_misses =
+		srv_stats.n_logical_read_ahead_misses;
+	export_vars.innodb_logical_read_ahead_prefetched =
+		srv_stats.n_logical_read_ahead_prefetched;
+	export_vars.innodb_logical_read_ahead_in_buf_pool =
+		srv_stats.n_logical_read_ahead_in_buf_pool;
 
 #ifdef UNIV_DEBUG
 	rw_lock_s_lock(&purge_sys->latch);
