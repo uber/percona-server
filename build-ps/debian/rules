@@ -153,6 +153,7 @@ ifeq ($(findstring nocheck,$(DEB_BUILD_OPTIONS)),)
 	cp -r mysql-test/* $(builddir)/mysql-test/
 	cp -r sql/share/* $(builddir)/sql/share/
 	cp -r scripts/*sql $(builddir)/scripts/
+	cp -r plugin/query_response_time/tests/ $(builddir)/plugin/query_response_time/
 	if [ ! -f testsuite-stamp ] ; then \
 	  (cd $(builddir) && $(MAKE) test-unit) || $(TESTSUITE_FAIL_CMD) ; \
 	  cd $(builddir)/mysql-test && ./mysql-test-run $(MYSQL_TEST_PARAM)  || $(TESTSUITE_FAIL_CMD) ; \
