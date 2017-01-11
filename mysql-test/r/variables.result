@@ -595,6 +595,7 @@ set sql_safe_updates=1;
 set sql_select_limit=1;
 set sql_select_limit=default;
 set sql_warnings=1;
+set @save_table_open_cache=@@global.table_open_cache;
 set global table_open_cache=100;
 set default_storage_engine=myisam;
 set global thread_cache_size=100;
@@ -782,6 +783,7 @@ SELECT * FROM INFORMATION_SCHEMA.SESSION_VARIABLES WHERE VARIABLE_NAME LIKE 'tab
 VARIABLE_NAME	VARIABLE_VALUE
 TABLE_OPEN_CACHE	1
 SET GLOBAL table_open_cache=DEFAULT;
+set global table_open_cache=@save_table_open_cache;
 set character_set_results=NULL;
 select ifnull(@@character_set_results,"really null");
 ifnull(@@character_set_results,"really null")

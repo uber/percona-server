@@ -1883,6 +1883,7 @@ DROP TABLE t1;
 #
 # BUG#48438 - crash with error in unioned query against merge table and view...
 #
+set @save_table_open_cache=@@table_open_cache;
 SET GLOBAL table_open_cache=3;
 CREATE TABLE t1(a INT);
 SELECT 1 FROM t1 AS a1, t1 AS a2, t1 AS a3, t1 AS a4 FOR UPDATE;
@@ -1892,7 +1893,7 @@ WHERE TABLE_SCHEMA='test' AND TABLE_NAME='t1';
 TABLE_ROWS	DATA_LENGTH
 0	0
 DROP TABLE t1;
-SET GLOBAL table_open_cache=DEFAULT;
+SET GLOBAL table_open_cache=@save_table_open_cache;
 End of 5.0 tests
 create table t1 (a int not null, key `a` (a) key_block_size=1024);
 show create table t1;
