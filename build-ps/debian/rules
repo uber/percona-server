@@ -156,7 +156,7 @@ ifeq ($(findstring nocheck,$(DEB_BUILD_OPTIONS)),)
 	cp -r plugin/query_response_time/tests/ $(builddir)/plugin/query_response_time/
 	if [ ! -f testsuite-stamp ] ; then \
 	  (cd $(builddir) && $(MAKE) test-unit) || $(TESTSUITE_FAIL_CMD) ; \
-	  cd $(builddir)/mysql-test && ./mysql-test-run  --parallel=auto --force $(MYSQL_TEST_PARAM)  || $(TESTSUITE_FAIL_CMD) ; \
+	  cd $(builddir)/mysql-test && ./mysql-test-run  --parallel=auto --force --max-test-fail=500 $(MYSQL_TEST_PARAM)  || $(TESTSUITE_FAIL_CMD) ; \
 	fi
 endif
 
