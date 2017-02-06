@@ -16,10 +16,10 @@ DO
 WHILE TRUE DO
 SELECT * FROM INFORMATION_SCHEMA.TABLES;
 END WHILE|
-# Creating 400 temp tables with each of MyISAM, InnoDB, MEMORY
+# Creating 300 temp tables with each of MyISAM, InnoDB, MEMORY
 SELECT COUNT(*) FROM INFORMATION_SCHEMA.GLOBAL_TEMPORARY_TABLES;
 COUNT(*)
-1200
+900
 # Dropping the temp tables
 KILL CONNECTION $ev_thread1_id
 KILL CONNECTION $ev_thread2_id
