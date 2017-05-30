@@ -1,3 +1,20 @@
+percona-server-5.6 (5.6.34-79.1-10) unstable; urgency=low
+
+  * Fix mysqldump variable names for logical read ahead - ported from Facebook MySQL (Patch: d1673a49)
+  * Ported "Enhance AIO page read merging, to handle logical read ahead" from Facebook MySQL (Patch: 61414c31)
+  * Logical read ahead ported from Facebook MySQL (Patches: 2b8be762, 947cc130, 210450af, 2996c4f5)
+  * Disable partition_reorganize_myisam MTR test
+  * Prebuild script for Jenkins
+  * Adaptive network buffers
+  * Adaptive network buffers MTR test
+  * Added Net_buffer_length status variable
+  * Increase client library minor version (needed by adaptive net buffers)
+  * Dynamically configurable ACL cache size
+  * Reduce contention on ACL cache lock
+  * Integrated Jemalloc memory introspection tool
+
+ -- Evgeniy Firsov <firsov@uber.com>  Tue, 30 May 2017 16:40:20 +0300
+
 percona-server-5.6 (5.6.29-rel76.3) unstable; urgency=low
 
   * Fix for description of the client package in debian (#1201074)
