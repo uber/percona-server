@@ -127,7 +127,7 @@ endif
 		-DWITH_PAM=ON \
                 -DWITH_ROCKSDB=0 \
                 -DWITH_SCALABILITY_METRICS=ON \
-		-DWITH_EXTRA_CHARSETS=all $(TOKUDB_OPTS_RELEASE) ..'
+		-DWITH_EXTRA_CHARSETS=all -DWITHOUT_TOKUDB=ON $(TOKUDB_OPTS_RELEASE) ..'
 	touch $@
 
 build: build-arch build-indep
