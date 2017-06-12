@@ -18175,9 +18175,9 @@ static MYSQL_SYSVAR_ENUM(empty_free_list_algorithm,
   srv_empty_free_list_algorithm,
   PLUGIN_VAR_OPCMDARG,
   "The algorithm to use for empty free list handling.  Allowed values: "
-  "LEGACY: Original Oracle MySQL 5.6 handling with single page flushes; "
-  "BACKOFF: (default) Wait until cleaner produces a free page.",
-  innodb_srv_empty_free_list_algorithm_validate, NULL, SRV_EMPTY_FREE_LIST_BACKOFF,
+  "LEGACY: (default) Original Oracle MySQL 5.6 handling with single page flushes; "
+  "BACKOFF: Wait until cleaner produces a free page.",
+  innodb_srv_empty_free_list_algorithm_validate, NULL, SRV_EMPTY_FREE_LIST_LEGACY,
   &innodb_empty_free_list_algorithm_typelib);
 
 static MYSQL_SYSVAR_LONG(buffer_pool_instances, innobase_buffer_pool_instances,
