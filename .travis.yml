@@ -8,4 +8,6 @@ before_script:
     - git checkout 5.6-uber
     - /bin/bash build-ps/jenkins-prebuild.sh
     - sudo mk-build-deps -i && git clean -f
+    - export MYSQL_TEST_PARAM="--tmpdir=/tmp/mysql-test/tmp --vardir=/tmp/mysql-test"
+    - df -hT
 script: git-buildpackage --git-submodules --git-upstream-tree=branch --git-upstream-branch=5.6-uber --git-verbose --git-ignore-branch --git-ignore-new

@@ -44,7 +44,7 @@ MYSQL_SRC = $(shell pwd)
 ifneq ($(findstring fulltest,$(DEB_BUILD_OPTIONS)),)
 # make test-bt is the testsuite run by the MySQL build team 
 # before a release, but it is long
-    MYSQL_TEST_PARAM=--big-test
+    MYSQL_TEST_PARAM=$(MYSQL_TEST_PARAM) --big-test
 endif
 
 USE_ASSEMBLER=--enable-assembler 
