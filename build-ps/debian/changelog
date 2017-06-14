@@ -1,4 +1,13 @@
-percona-server-5.6 (5.6.34-79.1-10) unstable; urgency=low
+percona-server-5.6 (5.6.34-79.1-11-0) unstable; urgency=low
+
+  * Fix innodb.innodb_logical_read_ahead* tests
+  * Change default value of innodb_empty_free_list_algorithm to 'legacy'
+  * Improve MTR test speed
+  * Disable TokuDB
+
+ -- Ovais Tariq <ot@uber.com>  Tue, 14 June 2017 10:58:50 -0700
+
+percona-server-5.6 (5.6.34-79.1-10-0) unstable; urgency=low
 
   * Fix mysqldump variable names for logical read ahead - ported from Facebook MySQL (Patch: d1673a49)
   * Ported "Enhance AIO page read merging, to handle logical read ahead" from Facebook MySQL (Patch: 61414c31)
