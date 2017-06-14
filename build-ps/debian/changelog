@@ -1,3 +1,11 @@
+percona-server-5.6 (5.6.34-79.1-11) unstable; urgency=low
+
+  * Change default value of innodb_empty_free_list_algorithm to 'legacy'
+  * Improve MTR test speed
+  * Disable TokuDB
+
+ -- Ovais Tariq <ot@uber.com>  Tue, 13 June 2017 15:22:30 -0700
+
 percona-server-5.6 (5.6.34-79.1-10) unstable; urgency=low
 
   * Fix mysqldump variable names for logical read ahead - ported from Facebook MySQL (Patch: d1673a49)
