@@ -13,9 +13,9 @@ before_script:
     - sudo mk-build-deps -i && git clean -f
 env:
     - TEST_SUITES=rpl
-    - TEST_SUITES=innodb,perfschema,funcs_1,funcs_2,opt_trace,parts,auth_sec
+    - TEST_SUITES=innodb,perfschema,funcs_2
     - TEST_SUITES=jp,stress,engines/iuds,engines/funcs,query_response_time,binlog,sys_vars,federated,main
-    - TEST_SUITES=innodb_stress,tokudb.add_index,tokudb.alter_table,tokudb,tokudb.bugs,tokudb.parts,tokudb.rpl,innodb_fts,innodb_zip
+    - TEST_SUITES=innodb_stress,tokudb.add_index,tokudb.alter_table,tokudb,tokudb.bugs,tokudb.parts,tokudb.rpl,innodb_fts,innodb_zip,parts,auth_sec,funcs_1,opt_trace
 script: cmake -DWITHOUT_TOKUDB=ON . && make -j3 && cd mysql-test && ./mysql-test-run --fast --retry-failure=1 --force --suites=$TEST_SUITES
 #script: git-buildpackage --git-builder="debuild --preserve-env -i -I" --git-submodules --git-upstream-tree=branch --git-upstream-branch=5.6-uber --git-verbose --git-ignore-branch --git-ignore-new
 
